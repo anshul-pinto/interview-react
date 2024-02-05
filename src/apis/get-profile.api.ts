@@ -1,14 +1,20 @@
-import { ARTIFACT_BE_TOKEN } from "../secrets"
+import { mockProfileData } from '../__mock__/mock-profile-data'
+import { ARTIFACT_BE_TOKEN } from '../secrets'
 
 export const getProfileData = () => {
-    const options = { method: 'GET', headers: {
-      'Authorization': ARTIFACT_BE_TOKEN
-    }}
-    return fetch(
-      `https://api-staging-0.gotartifact.com/v2/users/me`,
-      options
-    )
-      .then((response) => response.json())
-      .then((response) => console.log(response))
-      .catch((err) => console.error(err))
+  const options = {
+    method: 'GET',
+    headers: {
+      Authorization: ARTIFACT_BE_TOKEN,
+    },
   }
+  return fetch(`/v2/users/me`, options)
+    .then((response) => response.json())
+    .then((response) => {
+      if (response && response.profile) return response.profile
+      else return mockProfileData.profile
+    })
+    .catch((err) => {
+      console.error('Unexpected error', err)
+    })
+}

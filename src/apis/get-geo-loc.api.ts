@@ -1,12 +1,58 @@
 import { ABSTRACT_API_KEY } from '../secrets'
 
-export const getGeoLocationData = () => {
+export type TLocationData = {
+  ip_address: string
+  city: string
+  city_geoname_id: number
+  region: string
+  region_iso_code: string
+  region_geoname_id: number
+  postal_code: string
+  country: string
+  country_code: string
+  country_geoname_id: number
+  country_is_eu: boolean
+  continent: string
+  continent_code: string
+  continent_geoname_id: number
+  longitude: number
+  latitude: number
+  security: {
+    is_vpn: boolean
+  }
+  timezone: {
+    name: string
+    abbreviation: string
+    gmt_offset: number
+    current_time: string
+    is_dst: boolean
+  }
+  flag: {
+    emoji: string
+    unicode: string
+    png: string
+    svg: string
+  }
+  currency: {
+    currency_name: string
+    currency_code: string
+  }
+  connection: {
+    autonomous_system_number: number
+    autonomous_system_organization: string
+    connection_type: string
+    isp_name: string
+    organization_name: string
+  }
+}
+
+export const getGeoLocationData = (): Promise<TLocationData | void> => {
   const options = { method: 'GET' }
   return fetch(
     `https://ipgeolocation.abstractapi.com/v1?api_key=${ABSTRACT_API_KEY}`,
     options
   )
     .then((response) => response.json())
-    .then((response) => response)
+    .then((response: TLocationData) => response)
     .catch((err) => console.error(err))
 }

@@ -1,0 +1,51 @@
+.ProfileCard {
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ProfileCard img {
+  max-width: 100%;
+  margin-bottom: 15px; /* Add a margin between the image and the form fields */
+}
+
+.formRow {
+  display: flex;
+  justify-content: space-between;
+  width: 320px;
+  margin-bottom: 15px; /* Add a margin between each form field row */
+}
+
+.inputField{
+  display: flex;
+  align-items: center;
+}
+
+.ProfileCard label {
+  min-width: 100px;
+}
+
+.ProfileCard input {
+  padding: 8px;
+  margin-top: 5px; /* Add a small margin above each input field */
+  min-width: 256px;
+  border-radius: 6px;
+}
+
+.ProfileCard button {
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.ProfileCard button:hover {
+  background-color: #45a049;
+}
