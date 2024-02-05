@@ -1,11 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import React, { useEffect } from 'react'
+import { getGeoLocationData } from './apis/get-geo-loc.api'
+import { getProfileData } from './apis/get-profile.api'
 
 function App() {
+  useEffect(() => {
+    getGeoLocationData()
+    getProfileData()
+  }, [])
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -19,7 +25,7 @@ function App() {
         </a>
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
