@@ -20,6 +20,7 @@ export const TestingExplorerData: TExplorer = {
           id: 4,
           name: 'accrodian.tsx',
           isFolder: false,
+          files: [],
         },
       ],
     },
