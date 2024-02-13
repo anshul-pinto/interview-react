@@ -29,6 +29,24 @@ export const Folder: React.FC<IFolder> = ({ folder, addNode }) => {
     })
   }
 
+  const handleAddingNode = (
+    folder: TExplorer,
+    itemName: string,
+    isFolder: boolean
+  ) => {
+    addNode(folder, itemName, isFolder)
+    setAddItem({
+      value: false,
+      isFolder: false,
+    })
+  }
+
+  const closeInput = () =>
+    setAddItem({
+      value: false,
+      isFolder: false,
+    })
+
   if (folder.isFolder)
     return (
       <>
@@ -61,21 +79,16 @@ export const Folder: React.FC<IFolder> = ({ folder, addNode }) => {
               <span>{addItem.isFolder ? FOLDER_ICON : FILE_ICON}</span>
               <input
                 autoFocus
-                onBlur={() => {
-                  setAddItem({
-                    value: false,
-                    isFolder: false,
-                  })
+                onBlur={(e) => {
+                  const itemName = (e.target as HTMLInputElement).value
+                  if (itemName) {
+                    handleAddingNode(folder, itemName, addItem.isFolder)
+                  } else closeInput()
                 }}
                 onKeyDown={(e) => {
                   const itemName = (e.target as HTMLInputElement).value
                   if (e.key === 'Enter' && itemName) {
-                    // handle adding node
-                    addNode(folder, itemName, addItem.isFolder)
-                    setAddItem({
-                      value: false,
-                      isFolder: false,
-                    })
+                    handleAddingNode(folder, itemName, addItem.isFolder)
                   }
                 }}
               ></input>
