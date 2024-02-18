@@ -18,6 +18,9 @@ export const HomePage = () => {
         <li>
           <Link to={'/file-explorer'}>File Explorer</Link>
         </li>
+        <li>
+          <Link to={'/progress'}>Progress</Link>
+        </li>
       </ul>
     </div>
   )
