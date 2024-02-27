@@ -21,6 +21,9 @@ export const HomePage = () => {
         <li>
           <Link to={'/progress'}>Progress</Link>
         </li>
+        <li>
+          <Link to={'/infinite-scroll'}>Infinite Scroll</Link>
+        </li>
       </ul>
     </div>
   )
